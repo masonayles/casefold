@@ -1,47 +1,67 @@
 casefold is a command line program written in Java to standardize data files.
 
 # Features
-Convert text to:
+
+#### Convert text to:
+
 * Lowercase
 * Uppercase
 * Sentence case
-  - First of each sentence.
+  - Capitalize first word of each sentence.
 * Title case
-  - First of each word.
+  - Capitalize each word.
 
-## Support:
+# File Support:
 Standard input & plain text files in the same location as the program.
 
-# Meeting 2
-- input formatting (pipes?)
+# Valid Input
+casefold [option] filename.txt
 
-  * casefold [option] filename.txt
+casefold [option]
+  * file name must be piped from other function
 
-  * casefold [option] (scanner for system.in till ?)
-    * cat filename.txt | casefold [option]
-  
-  String[] args
-- [option] formatting
-  
-  -u / --upper 
+# Option List
 
-  -l / --lower
+### -u / --upper
 
-  -s / --sentence
+* Capitalizes all characters
 
-  -t / --title
+### -l / --lower
 
-- output formatting
+* Converts all characters to lowercase
+
+### -s / --sentence
+
+* Capitalizes the first character of each sentence
+* Converts all other characters to lowercase
+
+### -t / --title
+
+* Capitalizes first character of all words, except:
+  * a / an
+  * the
+  * at
+  * to
+  * by
+  * and
+  * but
+  * for
+  * or / nor
+
+# Errors
+//TODO
+
+* system.exit 1/2/3
+* record exit code meanings
+* no/wrong options
+* invalid file
+  * not exist
+  * no input
+  * not open
+  * IO error
+  * invalid type
+
+# Output
   * print standard output plain text
   * hyperlink?
   * space/punctuation delimited?
-- error handling
-  * system.exit 1/2/3
-  * record exit code meanings
-  * no/wrong options
-  * invalid file 
-    * not exist
-    * no input
-    * not open
-    * IO error
-    * invalid type
