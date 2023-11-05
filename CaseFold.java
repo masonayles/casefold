@@ -16,8 +16,8 @@ public class CaseFold
         CommandLine input = null;
         try
         {
-        CommandLineParser parser = new DefaultParser();
-        input = parser.parse(options, args);
+            CommandLineParser parser = new DefaultParser();
+            input = parser.parse(options, args);
         }
         catch (ParseException err)
         {
@@ -37,7 +37,25 @@ public class CaseFold
         {
             // get the actual input type value
             String inputType = input.getOptionValue("u");
-            System.out.println();
+            System.out.format("input-type: %s%n", inputType);
+        }
+        else if (input.hasOption("l"))
+        {
+            // get the actual input type value
+            String inputType = input.getOptionValue("l");
+            System.out.format("input-type: %s%n", inputType);
+        }
+        else if (input.hasOption("s"))
+        {
+            // get the actual input type value
+            String inputType = input.getOptionValue("s");
+            System.out.format("input-type: %s%n", inputType);
+        }
+        else if (input.hasOption("t"))
+        {
+            // get the actual input type value
+            String inputType = input.getOptionValue("t");
+            System.out.format("input-type: %s%n", inputType);
         }
     }
 }
