@@ -21,7 +21,7 @@ public class CaseFold
         }
         catch (ParseException err)
         {
-            System.err.println("?");
+            System.err.println("Parsing error. Cause: " + err.getMessage());
             System.exit(2);
         }
 
@@ -59,7 +59,24 @@ public class CaseFold
         }
         else
         {
+            System.err.println("Invalid/Missing options");
             System.exit(1);
+        }
+
+        // get remaining arguments
+        String[] inputArray = input.getArgs();
+
+        // get file name
+        String fileName = null;
+        // input #1
+        if (inputArray.length == 1)
+        {
+            fileName = inputArray[0];
+        }
+        // input #2
+        else
+        {
+
         }
     }
 }
