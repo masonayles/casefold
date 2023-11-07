@@ -57,5 +57,9 @@ public class CaseFold
             String inputType = input.getOptionValue("t");
             System.out.format("input-type: %s%n", inputType);
         }
+        else
+        {
+            System.exit(1);
+        }
     }
 }

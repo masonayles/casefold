@@ -65,3 +65,7 @@ casefold [option]
   * print standard output plain text
   * hyperlink?
   * space/punctuation delimited?
+
+# Exit Codes
+* 1 - Success
+* 2 - Option error
