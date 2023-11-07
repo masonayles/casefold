@@ -22,7 +22,7 @@ public class CaseFold
         catch (ParseException err)
         {
             System.err.println("?");
-            System.exit(1);
+            System.exit(2);
         }
 
         if (input.hasOption("h"))

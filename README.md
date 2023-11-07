@@ -67,5 +67,6 @@ casefold [option]
   * space/punctuation delimited?
 
 # Exit Codes
-* 1 - Success
-* 2 - Option error
+* 0 - Success
+* 1 - Option Error
+* 2 - Parse Error
