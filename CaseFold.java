@@ -6,11 +6,15 @@ public class CaseFold
     {
         // configure command-line options
         Options options = new Options();
-        options.addOption("u", "upper", false, "convert to UPPER CASE");
-        options.addOption("l", "lower", false, "convert to lower case");
-        options.addOption("s", "sentence", false, "convert to Sentence case");
-        options.addOption("t", "title", false, "convert to Title Case");
-        options.addOption("h", "help", false, "print usage");
+        options.addOption("u", "upper", false,
+                "Convert text from input file to UPPERCASE text");
+        options.addOption("l", "lower", false,
+                "Convert text from input file to lowercase text");
+        options.addOption("s", "sentence", false,
+                "Convert text from input file to Sentence case text");
+        options.addOption("t", "title", false,
+                "Convert text from input file to Title Case text");
+        options.addOption("h", "help", false, "Prints usage information");
 
         // parse args using the above options parser
         CommandLine input = null;
@@ -25,6 +29,8 @@ public class CaseFold
             System.exit(2);
         }
 
+        // check command option
+        String option = null;
         if (input.hasOption("h"))
         {
             // automatically generate the help statement
@@ -35,33 +41,30 @@ public class CaseFold
         }
         else if (input.hasOption("u"))
         {
-            // get the actual input type value
-            String inputType = input.getOptionValue("u");
-            System.out.format("input-type: %s%n", inputType);
+            // uppercase option
+            option = "u";
         }
         else if (input.hasOption("l"))
         {
-            // get the actual input type value
-            String inputType = input.getOptionValue("l");
-            System.out.format("input-type: %s%n", inputType);
+            // lowercase option
+            option = "l";
         }
         else if (input.hasOption("s"))
         {
-            // get the actual input type value
-            String inputType = input.getOptionValue("s");
-            System.out.format("input-type: %s%n", inputType);
+            // sentence case option
+            option = "s";
         }
         else if (input.hasOption("t"))
         {
-            // get the actual input type value
-            String inputType = input.getOptionValue("t");
-            System.out.format("input-type: %s%n", inputType);
+            // title case option
+            option = "t";
         }
         else
         {
             System.err.println("Invalid/Missing options");
             System.exit(1);
         }
+        System.out.format("input-type: %s%n", option);
 
         // get remaining arguments
         String[] inputArray = input.getArgs();
@@ -76,7 +79,7 @@ public class CaseFold
         // input #2
         else
         {
-
+            // TODO get title from pipe input?
         }
     }
 }
