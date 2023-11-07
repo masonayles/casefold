@@ -1,9 +1,12 @@
 import org.apache.commons.cli.*;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 public class CaseFold
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws FileNotFoundException {
         // configure command-line options
         Options options = new Options();
         options.addOption("u", "upper", false,
@@ -75,6 +78,23 @@ public class CaseFold
         if (inputArray.length == 1)
         {
             fileName = inputArray[0];
+
+            // Reading text from the input file. Did some research and still working it out.
+            // Not done.
+            try
+            {
+                BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                StringBuilder text = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null)
+                {
+                    text.append(line).append("\n");
+                }
+                reader.close();
+
+                // preform the selected case conversion
+                // must also handle exceptions.
+            }
         }
         // input #2
         else
