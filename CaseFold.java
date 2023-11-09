@@ -1,9 +1,5 @@
 import org.apache.commons.cli.*;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class CaseFold
 {
@@ -84,8 +80,18 @@ public class CaseFold
         // input #2
         else
         {
-            // TODO get title from pipe input?
-            fileName = "";
+            // create reader over input
+            BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
+
+            // get file name
+            try
+            {
+                fileName = inputReader.readLine();
+            }
+            catch (IOException err)
+            {
+                // TODO IOException
+            }
         }
 
         // Reading text from the input file. Did some research and still working it out.
