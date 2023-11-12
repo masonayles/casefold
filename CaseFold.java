@@ -90,7 +90,9 @@ public class CaseFold
             }
             catch (IOException err)
             {
-                // TODO IOException
+                System.err.println("Error reading file. Cause: " + err.getMessage());
+                err.printStackTrace();
+                System.exit(3);
             }
         }
 
@@ -107,12 +109,21 @@ public class CaseFold
             }
             reader.close();
 
-            // preform the selected case conversion
+            // Perform the selected case conversion
+            if (option.equals("u"))
+            {
+                System.out.println(text.toString().toUpperCase());
+            }
+            else if (option.equals("l"))
+            {
+                System.out.println(text.toString().toLowerCase());
+            }
             // must also handle exceptions.
         }
         catch(FileNotFoundException err)
         {
-            // TODO File not found
+            System.err.println("File not found");
+            System.exit(4);
         }
         catch (IOException e) {
             // TODO IOException
