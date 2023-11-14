@@ -148,7 +148,26 @@ public class CaseFold
 
             // Sentence case
             case "s" -> {
-                // TODO sentence case
+                boolean isNewSentence = true;
+                for (char ch : text.toString().toCharArray())
+                {
+                    if (isNewSentence && Character.isLetter(ch))
+                    {
+                        ch = Character.toUpperCase(ch);
+                        isNewSentence = false;
+                    }
+                    else
+                    {
+                        ch = Character.toLowerCase(ch);
+                    }
+
+                    if (ch == '.' || ch == '?' || ch == '!')
+                    {
+                        isNewSentence = true;
+                    }
+
+                    convertedString.append(ch);
+                }
             }
         }
 
