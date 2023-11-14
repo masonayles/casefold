@@ -133,6 +133,21 @@ public class CaseFold
                         ch = Character.toUpperCase(ch);
                         isNewSentence = false;
                     }
+                    else
+                    {
+                        ch = Character.toLowerCase(ch);
+                    }
+
+                    if (ch == '.' || ch == '?' || ch == '!')
+                    {
+                        isNewSentence = true;
+                    }
+
+                    convertedString.append(ch);
+                }
+
+                System.out.println(convertedString);
+            }
             // Title case
             else if (option.equals("t"))
             {
