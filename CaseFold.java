@@ -65,7 +65,6 @@ public class CaseFold
             System.err.println("Invalid/Missing options");
             System.exit(1);
         }
-        System.out.format("input-type: %s%n", option);
 
         // get remaining arguments
         String[] inputArray = input.getArgs();
@@ -142,8 +141,7 @@ public class CaseFold
                         ch = Character.toLowerCase(ch);
                     }
                     convertedString.append(ch);
-                }
-                System.out.println(convertedString);
+                };
             }
 
             // Sentence case
@@ -172,7 +170,7 @@ public class CaseFold
         }
 
         // return converted text
-        System.out.println(convertedString);
+        System.out.print(convertedString);
         System.exit(0);
     }
 }
