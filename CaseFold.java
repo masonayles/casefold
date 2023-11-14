@@ -100,10 +100,11 @@ public class CaseFold
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
-            String line;
+            String line = reader.readLine();
+            text.append(line);
             while ((line = reader.readLine()) != null)
             {
-                text.append(line).append("\n");
+                text.append("\n").append(line);
             }
             reader.close();
         }
