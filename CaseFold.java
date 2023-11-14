@@ -135,6 +135,7 @@ public class CaseFold
                     else if (convertNextToUpper)
                     {
                         ch = Character.toUpperCase(ch);
+                        convertNextToUpper = false;
                     }
                     else
                     {
