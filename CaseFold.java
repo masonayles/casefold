@@ -96,66 +96,64 @@ public class CaseFold
             }
         }
 
-        // Reading text from the input file. Did some research and still working it out.
-        // TODO finish
+        // Read text from the input file.
+        StringBuilder text = new StringBuilder();
         try
         {
             BufferedReader reader = new BufferedReader(new FileReader(fileName));
-            StringBuilder text = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null)
             {
                 text.append(line).append("\n");
             }
             reader.close();
-
-            // Perform the selected case conversion
-            // Upper case
-            if (option.equals("u"))
-            {
-                System.out.println(text.toString().toUpperCase());
-            }
-            // Lower case
-            else if (option.equals("l"))
-            {
-                System.out.println(text.toString().toLowerCase());
-            }
-            // Title case
-            else if (option.equals("t"))
-            {
-                boolean convertNextToUpper = true;
-                StringBuilder convertedString = new StringBuilder();
-
-                for (char ch : text.toString().toCharArray())
-                {
-                    if (ch == ' ')
-                    {
-                        convertNextToUpper = true;
-                    }
-                    else if (convertNextToUpper)
-                    {
-                        ch = Character.toUpperCase(ch);
-                        convertNextToUpper = false;
-                    }
-                    else
-                    {
-                        ch = Character.toLowerCase(ch);
-                    }
-                    convertedString.append(ch);
-                }
-
-                System.out.println(convertedString);
-            }
-            // must also handle exceptions.
         }
         catch(FileNotFoundException err)
         {
             System.err.println("File not found");
             System.exit(4);
         }
-        catch (IOException e) {
-            // TODO IOException
-            e.printStackTrace();
+        catch (IOException err) {
+            System.err.println("Error reading file. Cause: " + err.getMessage());
+            err.printStackTrace();
+            System.exit(3);
         }
+
+        // Perform the selected case conversion
+        StringBuilder convertedString = new StringBuilder();
+
+        switch (option) {
+            // Upper case
+            case "u" -> convertedString.append(text.toString().toUpperCase());
+
+            // Lower case
+            case "l" -> convertedString.append(text.toString().toLowerCase());
+
+            // Title case
+            case "t" -> {
+                boolean convertNextToUpper = true;
+                for (char ch : text.toString().toCharArray()) {
+                    if (ch == ' ') {
+                        convertNextToUpper = true;
+                    } else if (convertNextToUpper) {
+                        ch = Character.toUpperCase(ch);
+                        convertNextToUpper = false;
+                    } else {
+                        ch = Character.toLowerCase(ch);
+                    }
+                    convertedString.append(ch);
+                }
+                System.out.println(convertedString);
+            }
+
+            // Sentence case
+            case "s" -> {
+                // TODO sentence case
+            }
+        }
+
+        // return converted text
+        System.out.println(convertedString);
+        System.exit(0);
     }
 }
