@@ -120,6 +120,19 @@ public class CaseFold
             {
                 System.out.println(text.toString().toLowerCase());
             }
+            // Sentence case
+            else if (option.equals("s"))
+            {
+                boolean isNewSentence = true;
+                StringBuilder convertedString = new StringBuilder();
+
+                for (char ch : text.toString().toCharArray())
+                {
+                    if (isNewSentence && Character.isLetter(ch))
+                    {
+                        ch = Character.toUpperCase(ch);
+                        isNewSentence = false;
+                    }
             // Title case
             else if (option.equals("t"))
             {
