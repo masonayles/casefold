@@ -110,13 +110,40 @@ public class CaseFold
             reader.close();
 
             // Perform the selected case conversion
+            // Upper case
             if (option.equals("u"))
             {
                 System.out.println(text.toString().toUpperCase());
             }
+            // Lower case
             else if (option.equals("l"))
             {
                 System.out.println(text.toString().toLowerCase());
+            }
+            // Title case
+            else if (option.equals("t"))
+            {
+                boolean convertNextToUpper = true;
+                StringBuilder convertedString = new StringBuilder();
+
+                for (char ch : text.toString().toCharArray())
+                {
+                    if (ch == ' ')
+                    {
+                        convertNextToUpper = true;
+                    }
+                    else if (convertNextToUpper)
+                    {
+                        ch = Character.toUpperCase(ch);
+                    }
+                    else
+                    {
+                        ch = Character.toLowerCase(ch);
+                    }
+                    convertedString.append(ch);
+                }
+
+                System.out.println(convertedString);
             }
             // must also handle exceptions.
         }
