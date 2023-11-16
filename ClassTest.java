@@ -30,7 +30,27 @@ public class ClassTest
         exit.expectSystemExitWithStatus(0);
 
         // run program
-        String[] args = {"-help"};
+        String[] args = {"--help"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_u_exit0()
+    {
+        exit.expectSystemExitWithStatus(0);
+
+        // run program
+        String[] args = {"-u", "hello.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_upper_exit0()
+    {
+        exit.expectSystemExitWithStatus(0);
+
+        // run program
+        String[] args = {"--upper", "hello.txt"};
         CaseFold.main(args);
     }
 
