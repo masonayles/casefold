@@ -48,19 +48,6 @@ casefold [option]
   * for
   * or / nor
 
-# Errors
-//TODO
-
-* system.exit 1/2/3
-* record exit code meanings
-* no/wrong options
-* invalid file
-  * not exist
-  * no input
-  * not open
-  * IO error
-  * invalid type
-
 # Output
   * print standard output plain text
   * hyperlink?

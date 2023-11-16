@@ -75,8 +75,5 @@ public class ClassTest
 
         String[] args = {"-l", "test.txt"};
         CaseFold.main(args);
-
-        String output = stdout.getLog();
-        System.out.println(output);
     }
 }
