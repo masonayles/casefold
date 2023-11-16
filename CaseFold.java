@@ -122,7 +122,8 @@ public class CaseFold
         // Perform the selected case conversion
         StringBuilder convertedString = new StringBuilder();
 
-        switch (option) {
+        switch (option)
+        {
             // Upper case
             case "u" -> convertedString.append(text.toString().toUpperCase());
 
@@ -130,15 +131,26 @@ public class CaseFold
             case "l" -> convertedString.append(text.toString().toLowerCase());
 
             // Title case
-            case "t" -> {
+            case "t" ->
+            {
                 boolean convertNextToUpper = true;
-                for (char ch : text.toString().toCharArray()) {
-                    if (ch == ' ') {
+                for (char ch : text.toString().toCharArray())
+                {
+                    if (ch == ' ')
+                    {
                         convertNextToUpper = true;
-                    } else if (convertNextToUpper) {
+                    }
+                    else if (ch == '\n')
+                    {
+                        convertNextToUpper = true;
+                    }
+                    else if (convertNextToUpper)
+                    {
                         ch = Character.toUpperCase(ch);
                         convertNextToUpper = false;
-                    } else {
+                    }
+                    else
+                    {
                         ch = Character.toLowerCase(ch);
                     }
                     convertedString.append(ch);
@@ -146,7 +158,8 @@ public class CaseFold
             }
 
             // Sentence case
-            case "s" -> {
+            case "s" ->
+            {
                 boolean isNewSentence = true;
                 for (char ch : text.toString().toCharArray())
                 {
