@@ -220,6 +220,26 @@ public class ClassTest
         CaseFold.main(args);
     }
 
-    
+    @Test
+    public void test_emptyFile_output() {
+        exit.expectSystemExitWithStatus(0);
+        exit.checkAssertionAfterwards(new Assertion() {
+            @Override
+            public void checkAssertion() {
+                // Expecting empty output for an empty file
+                String expected = "";
+                String actual = stdout.getLog();
+                String message = String.format("expected: '%s', actual: '%s'", expected, actual);
+                assertEquals(message, expected, actual);
+            }
+        });
+
+        // Assume the content of 'emptyTest.txt' is an empty file
+        String[] args = {"-l", "emptyTest.txt"};
+        CaseFold.main(args);
+    }
+
+
+
 
 }
