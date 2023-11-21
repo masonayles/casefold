@@ -201,4 +201,25 @@ public class ClassTest
         String[] args = {"-t", "test.txt"};
         CaseFold.main(args);
     }
+
+    @Test
+    public void test_invalidOption_exit1() {
+        exit.expectSystemExitWithStatus(1);
+        exit.checkAssertionAfterwards(new Assertion() {
+            @Override
+            public void checkAssertion() {
+                String expectedErrorMessage = "Invalid/Missing options";
+                String actualErrorMessage = stdout.getLog();
+                String message = String.format("expected: '%s', actual: '%s'", expectedErrorMessage, actualErrorMessage);
+                assertEquals(message, expectedErrorMessage, actualErrorMessage);
+            }
+        });
+
+        // Run program with an invalid option
+        String[] args = {"--invalidOption", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    
+
 }
