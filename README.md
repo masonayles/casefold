@@ -38,15 +38,9 @@ casefold [option]
 ### -t / --title
 
 * Capitalizes first character of all words, except:
-  * a / an
-  * the
-  * at
-  * to
-  * by
-  * and
-  * but
-  * for
-  * or / nor
+  * a / an / the
+  * as / at / by / for / in / of / off / on / per / to / up / via
+  * and / but / if / nor / or / so / yet
 
 # Output
   * print standard output plain text

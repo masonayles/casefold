@@ -3,6 +3,9 @@ import java.io.*;
 
 public class CaseFold
 {
+    private static final String[] lowerWords = {"a", "an", "the", "as", "at", "by", "for", "in", "of", "off", "on",
+            "per", "to", "up", "via", "and", "but", "if", "nor", "or", "so", "yet"};
+    
     public static void main(String[] args)
     {
         // configure command-line options
@@ -134,11 +137,43 @@ public class CaseFold
             case "t" ->
             {
                 boolean convertNextToUpper = true;
-                for (char ch : text.toString().toCharArray())
+                char[] charArray = text.toString().toCharArray();
+                
+                // loop across all characters
+                for (int i = 0; i < charArray.length; i++)
                 {
+                    char ch = charArray[i];
                     if (ch == ' ')
                     {
-                        convertNextToUpper = true;
+                        boolean lowerWord = false;
+                        // check if non-capitalize word
+                        for (String word : lowerWords)
+                        {
+                            // check if lower word already found
+                            if (lowerWord)
+                            {
+                                // end check
+                                break;
+                            }
+
+                            // continue checking
+                            lowerWord = true;
+                            for (int x = 0; x < word.length(); x++)
+                            {
+                                char letter = Character.toLowerCase(charArray[(i + 1) + x]);
+                                char wordLetter = word.charAt(x);
+                                if (letter != wordLetter)
+                                {
+                                    lowerWord = false;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!lowerWord)
+                        {
+                            convertNextToUpper = true;
+                        }
                     }
                     else if (ch == '\n')
                     {

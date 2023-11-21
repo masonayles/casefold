@@ -124,8 +124,6 @@ public class ClassTest
         CaseFold.main(args);
     }
 
-    //TODO Finish Exit Codes
-
     // OUTPUT
 
     @Test
@@ -136,7 +134,7 @@ public class ClassTest
             @Override
             public void checkAssertion()
             {
-                String expected = "hello world!\nwelcome!";
+                String expected = "hello world!\nwelcome to this program!";
                 String actual = stdout.getLog();
                 String message = String.format("expected: '%s', actual: '%s'", expected, actual);
                 assertEquals(message, expected, actual);
@@ -155,7 +153,7 @@ public class ClassTest
             @Override
             public void checkAssertion()
             {
-                String expected = "HELLO WORLD!\nWELCOME!";
+                String expected = "HELLO WORLD!\nWELCOME TO THIS PROGRAM!";
                 String actual = stdout.getLog();
                 String message = String.format("expected: '%s', actual: '%s'", expected, actual);
                 assertEquals(message, expected, actual);
@@ -174,7 +172,7 @@ public class ClassTest
             @Override
             public void checkAssertion()
             {
-                String expected = "Hello world!\nWelcome!";
+                String expected = "Hello world!\nWelcome to this program!";
                 String actual = stdout.getLog();
                 String message = String.format("expected: '%s', actual: '%s'", expected, actual);
                 assertEquals(message, expected, actual);
@@ -193,7 +191,7 @@ public class ClassTest
             @Override
             public void checkAssertion()
             {
-                String expected = "Hello World!\nWelcome!";
+                String expected = "Hello World!\nWelcome to This Program!";
                 String actual = stdout.getLog();
                 String message = String.format("expected: '%s', actual: '%s'", expected, actual);
                 assertEquals(message, expected, actual);
