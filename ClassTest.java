@@ -115,6 +115,16 @@ public class ClassTest
     }
 
     @Test
+    public void test_ParseError_exit2()
+    {
+        exit.expectSystemExitWithStatus(2);
+
+        // run program
+        String[] args = {"-sen tence", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
     public void test_FileNotFound_exit4()
     {
         exit.expectSystemExitWithStatus(4);
