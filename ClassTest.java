@@ -40,7 +40,7 @@ public class ClassTest
         exit.expectSystemExitWithStatus(0);
 
         // run program
-        String[] args = {"-u", "hello.txt"};
+        String[] args = {"-u", "test.txt"};
         CaseFold.main(args);
     }
 
@@ -50,7 +50,47 @@ public class ClassTest
         exit.expectSystemExitWithStatus(0);
 
         // run program
-        String[] args = {"--upper", "hello.txt"};
+        String[] args = {"--upper", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_t_exit0()
+    {
+        exit.expectSystemExitWithStatus(0);
+
+        // run program
+        String[] args = {"-t", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_title_exit0()
+    {
+        exit.expectSystemExitWithStatus(0);
+
+        // run program
+        String[] args = {"--title", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_s_exit0()
+    {
+        exit.expectSystemExitWithStatus(0);
+
+        // run program
+        String[] args = {"-s", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_sentence_exit0()
+    {
+        exit.expectSystemExitWithStatus(0);
+
+        // run program
+        String[] args = {"--sentence", "test.txt"};
         CaseFold.main(args);
     }
 
@@ -74,6 +114,16 @@ public class ClassTest
         CaseFold.main(args);
     }
 
+    @Test
+    public void test_FileNotFound_exit4()
+    {
+        exit.expectSystemExitWithStatus(4);
+
+        // run program
+        String[] args = {"-u", "hello.txt"};
+        CaseFold.main(args);
+    }
+
     //TODO Finish Exit Codes
 
     // OUTPUT
@@ -94,6 +144,63 @@ public class ClassTest
         });
 
         String[] args = {"-l", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_upper_output()
+    {
+        exit.expectSystemExitWithStatus(0);
+        exit.checkAssertionAfterwards(new Assertion() {
+            @Override
+            public void checkAssertion()
+            {
+                String expected = "HELLO WORLD!\nWELCOME!";
+                String actual = stdout.getLog();
+                String message = String.format("expected: '%s', actual: '%s'", expected, actual);
+                assertEquals(message, expected, actual);
+            }
+        });
+
+        String[] args = {"-u", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_sentence_output()
+    {
+        exit.expectSystemExitWithStatus(0);
+        exit.checkAssertionAfterwards(new Assertion() {
+            @Override
+            public void checkAssertion()
+            {
+                String expected = "Hello world!\nWelcome!";
+                String actual = stdout.getLog();
+                String message = String.format("expected: '%s', actual: '%s'", expected, actual);
+                assertEquals(message, expected, actual);
+            }
+        });
+
+        String[] args = {"-s", "test.txt"};
+        CaseFold.main(args);
+    }
+
+    @Test
+    public void test_title_output()
+    {
+        exit.expectSystemExitWithStatus(0);
+        exit.checkAssertionAfterwards(new Assertion() {
+            @Override
+            public void checkAssertion()
+            {
+                String expected = "Hello World!\nWelcome!";
+                String actual = stdout.getLog();
+                String message = String.format("expected: '%s', actual: '%s'", expected, actual);
+                assertEquals(message, expected, actual);
+            }
+        });
+
+        String[] args = {"-t", "test.txt"};
         CaseFold.main(args);
     }
 }
