@@ -1,5 +1,8 @@
 import org.apache.commons.cli.*;
 import java.io.*;
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 public class CaseFold
 {
@@ -8,17 +11,50 @@ public class CaseFold
     
     public static void main(String[] args)
     {
+        Locale locale = Locale.getDefault();
+        String language = locale.getLanguage();
+        String country = locale.getCountry();
+        System.out.format("Language: %s_%s%n", language, country);
+
+        // load resources from disk for current locale
+        ResourceBundle resources = null;
+        try {
+            resources = ResourceBundle.getBundle("casefold", locale);
+        }
+        // error for incomplete language
+        catch (MissingResourceException err)
+        {
+            //TODO change wording?
+            String error404 = "Locale not found / Landinstelling niet gevonden / لم يتم العثور على اللغة / \n" +
+                              "Paramètres régionaux introuvables / Gebietsschema nicht gefunden / \n" +
+                              "Località non trovata / Локаль не найдена / Configuración regional no encontrada / \n" +
+                              "ロケールが見つかりません";
+            System.err.println(error404);
+            System.exit(404);
+        }
+
+        // get resource strings
+        String upperString = resources.getString("upper");
+        String lowerString = resources.getString("lower");
+        String sentenceString = resources.getString("sentence");
+        String titleString = resources.getString("title");
+        String helpString = resources.getString("help");
+        String desc = resources.getString("description");
+        String error1 = resources.getString("err1");
+        String error2 = resources.getString("err2");
+        String error3 = resources.getString("err3");
+        String error4 = resources.getString("err4");
+
         // configure command-line options
         Options options = new Options();
-        options.addOption("u", "upper", false,
-                "Convert text from input file to UPPERCASE text");
+        options.addOption("u", "upper", false, upperString);
         options.addOption("l", "lower", false,
-                "Convert text from input file to lowercase text");
+                lowerString);
         options.addOption("s", "sentence", false,
-                "Convert text from input file to Sentence case text");
+                sentenceString);
         options.addOption("t", "title", false,
-                "Convert text from input file to Title Case text");
-        options.addOption("h", "help", false, "Prints usage information");
+                titleString);
+        options.addOption("h", "help", false, helpString);
 
         // parse args using the above options parser
         CommandLine input = null;
@@ -29,7 +65,7 @@ public class CaseFold
         }
         catch (ParseException err)
         {
-            System.err.println("Parsing error. Cause: " + err.getMessage());
+            System.err.println(error2 + err.getMessage());
             System.exit(2);
         }
 
@@ -39,8 +75,7 @@ public class CaseFold
         {
             // automatically generate the help statement
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("CaseFold", "Converts the input text to a specified case", options,
-                    "", true);
+            formatter.printHelp("CaseFold", desc, options, "", true);
             System.exit(0);
         }
         else if (input.hasOption("u"))
@@ -65,7 +100,7 @@ public class CaseFold
         }
         else
         {
-            System.err.println("Invalid/Missing options");
+            System.err.println(error1);
             System.exit(1);
         }
 
@@ -92,7 +127,7 @@ public class CaseFold
             }
             catch (IOException err)
             {
-                System.err.println("Error reading file. Cause: " + err.getMessage());
+                System.err.println(error3 + err.getMessage());
                 err.printStackTrace();
                 System.exit(3);
             }
@@ -113,7 +148,7 @@ public class CaseFold
         }
         catch(FileNotFoundException err)
         {
-            System.err.println("File not found");
+            System.err.println(error4);
             System.exit(4);
         }
         catch (IOException err) {

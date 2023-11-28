@@ -1,3 +1,5 @@
+#---------------------- English ----------------------
+
 casefold is a command line program written in Java to standardize data files.
 
 # Features
@@ -54,3 +56,4 @@ casefold [option]
 * 3 - IO Error
   * Error reading file
 * 4 - File Not Found Error
+* 404 - Unsupported Locale
