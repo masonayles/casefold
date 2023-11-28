@@ -2,16 +2,15 @@ JUnit = junit-4.13.2.jar
 HamcrestAll = hamcrest-all-1.3.jar
 CommonsCLI = commons-cli-1.6.0.jar
 SystemRules = system-rules-1.19.0.jar
-LibraryPath = ".:lib"
-ClassPath="$(LibraryPath)/$(CommonsCLI)/$(JUnit)/$(HamcrestAll)/$(SystemRules)"
-
+LibraryPath = .:lib
+ClassPath = $(LibraryPath)/$(CommonsCLI):$(LibraryPath)/$(JUnit):$(LibraryPath)/$(HamcrestAll):$(LibraryPath)/$(SystemRules)
 JavaFlags = -Djava.security.manager=allow
 
 CaseFold.class: CaseFold.java
 		javac -cp "$(LibraryPath)/$(CommonsCLI)"  CaseFold.java
 
 CaseFoldTest.class: CaseFold.java ClassTest.java
-		javac -cp $(ClassPath) $<
+		javac -cp "$(ClassPath)" ClassTest.java
 
 compile: CaseFold.class
 
@@ -24,7 +23,7 @@ run-example: CaseFold.class
 		java -cp ".lib:commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
 
 run-tests: CaseFold.class CaseFoldTest.class
-		java -cp $(ClassPath) $(JavaFlags) org.junit.runner.JUnitCore CaseFoldTest
+		java -cp "$(ClassPath)" $(JavaFlags) org.junit.runner.JUnitCore ClassTest
 
 # not sure if this is useful but it create a jar file and runs it through case fold. Might be useful for client but should ask and clarify.
 jar: CaseFold.class
