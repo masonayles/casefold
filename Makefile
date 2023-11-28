@@ -26,5 +26,9 @@ run-example: CaseFold.class
 run-tests: CaseFold.class CaseFoldTest.class
 		java -cp $(ClassPath) $(JavaFlags) org.junit.runner.JUnitCore CaseFoldTest
 
+# not sure if this is useful but it create a jar file and runs it through case fold. Might be useful for client but should ask and clarify.
+jar: CaseFold.class
+		jar cvfe CaseFold.jar CaseFold -C . CaseFold.class
+
 clean:
-		rm CaseFold.class CaseFoldTest.class
+		rm -f CaseFold.class CaseFoldTest.class
