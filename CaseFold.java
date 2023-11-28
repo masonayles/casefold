@@ -29,6 +29,12 @@ public class CaseFold
                               "Paramètres régionaux introuvables / Gebietsschema nicht gefunden / \n" +
                               "Località non trovata / Локаль не найдена / Configuración regional no encontrada / \n" +
                               "ロケールが見つかりません";
+            error404 = "This content is not available in your region.\n هذا المحتوى غير متوفر في منطقتك.\n " +
+                    "Deze inhoud is niet beschikbaar in uw regio.\n Ce contenu n'est pas disponible dans votre région." +
+                    "\n Dieser Inhalt ist in Ihrer Region nicht verfügbar.\n Questo contenuto non è disponibile nella " +
+                    "tua regione.\n Este contenido no está disponible en su región.\n " +
+                    "Этот контент недоступен в вашем регионе.\n このコンテンツはお住まいの地域ではご利用いただけません。";
+
             System.err.println(error404);
             System.exit(404);
         }
