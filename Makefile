@@ -27,7 +27,7 @@ run: CaseFold.class
 		java -cp ".:commons-cli-1.6.0.jar" CaseFold
 
 run-example: CaseFold.class
-		java -cp ".lib:commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
+		java -cp ".:lib:commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
 
 run-tests: CaseFold.class CaseFoldTest.class
 		java -cp $(ClassPath) $(JavaFlags) org.junit.runner.JUnitCore CaseFoldTest
