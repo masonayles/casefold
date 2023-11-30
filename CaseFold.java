@@ -24,7 +24,6 @@ public class CaseFold
         // error for incomplete language
         catch (MissingResourceException err)
         {
-            //TODO change wording?
             String error404 = "Locale not found / Landinstelling niet gevonden / لم يتم العثور على اللغة / \n" +
                               "Paramètres régionaux introuvables / Gebietsschema nicht gefunden / \n" +
                               "Località non trovata / Локаль не найдена / Configuración regional no encontrada / \n" +
