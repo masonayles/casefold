@@ -29,6 +29,15 @@ run: CaseFold.class
 run-example: CaseFold.class
 		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
 
+run-example2: CaseFold.class
+		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-l" "test.txt"
+
+run-example3: CaseFold.class
+		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-s" "test.txt"
+
+run-example4: CaseFold.class
+		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-t" "test.txt"
+
 run-tests: CaseFold.class CaseFoldTest.class
 		java -cp $(ClassPath) $(JavaFlags) org.junit.runner.JUnitCore CaseFoldTest
 
