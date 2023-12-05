@@ -14,7 +14,6 @@ public class CaseFold
         Locale locale = Locale.getDefault();
         String language = locale.getLanguage();
         String country = locale.getCountry();
-        System.out.format("Language: %s_%s%n", language, country);
 
         // load resources from disk for current locale
         ResourceBundle resources = null;
