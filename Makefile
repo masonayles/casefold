@@ -38,8 +38,14 @@ run-example3: CaseFold.class
 run-example4: CaseFold.class
 		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-t" "test.txt"
 
-run-help: CaseFold.class
+usage: CaseFold.class
 		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-h"
+
+spanish-usage: CaseFold.class
+		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" -Duser.language=es -Duser.region=MX CaseFold "-h"
+
+demo: CaseFold.class
+		cat test.txt | java -cp $(CLASSPATH) CaseFold
 
 run-tests: CaseFold.class CaseFoldTest.class
 		java -cp $(ClassPath) $(JavaFlags) org.junit.runner.JUnitCore CaseFoldTest

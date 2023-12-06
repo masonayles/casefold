@@ -108,11 +108,37 @@ public class CaseFold
         String[] inputArray = input.getArgs();
 
         // get file name
-        String fileName = null;
+        String fileName;
+
+        // Read text from the input file or user input.
+        StringBuilder text = new StringBuilder();
+
         // input #1
         if (inputArray.length == 1)
         {
             fileName = inputArray[0];
+            try
+            {
+                BufferedReader reader = new BufferedReader(new FileReader(fileName));
+                String line = reader.readLine();
+                text.append(line);
+                while ((line = reader.readLine()) != null)
+                {
+                    text.append("\n").append(line);
+                }
+                reader.close();
+            }
+            catch(FileNotFoundException err)
+            {
+                System.err.println(error4);
+                System.exit(4);
+            }
+            catch (IOException err)
+            {
+                System.err.println("Error reading file. Cause: " + err.getMessage());
+                err.printStackTrace();
+                System.exit(3);
+            }
         }
         // input #2
         else
@@ -123,7 +149,7 @@ public class CaseFold
             // get file name
             try
             {
-                fileName = inputReader.readLine();
+                text = text.append(inputReader.readLine());
             }
             catch (IOException err)
             {
@@ -131,30 +157,6 @@ public class CaseFold
                 err.printStackTrace();
                 System.exit(3);
             }
-        }
-
-        // Read text from the input file.
-        StringBuilder text = new StringBuilder();
-        try
-        {
-            BufferedReader reader = new BufferedReader(new FileReader(fileName));
-            String line = reader.readLine();
-            text.append(line);
-            while ((line = reader.readLine()) != null)
-            {
-                text.append("\n").append(line);
-            }
-            reader.close();
-        }
-        catch(FileNotFoundException err)
-        {
-            System.err.println(error4);
-            System.exit(4);
-        }
-        catch (IOException err) {
-            System.err.println("Error reading file. Cause: " + err.getMessage());
-            err.printStackTrace();
-            System.exit(3);
         }
 
         // Perform the selected case conversion
