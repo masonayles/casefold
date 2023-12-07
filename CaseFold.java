@@ -107,16 +107,15 @@ public class CaseFold
         // get remaining arguments
         String[] inputArray = input.getArgs();
 
-        // get file name
-        String fileName;
-
         // Read text from the input file or user input.
         StringBuilder text = new StringBuilder();
 
         // input #1
         if (inputArray.length == 1)
         {
-            fileName = inputArray[0];
+
+            // get file name
+            String fileName = inputArray[0];
             try
             {
                 BufferedReader reader = new BufferedReader(new FileReader(fileName));
@@ -149,7 +148,14 @@ public class CaseFold
             // get file name
             try
             {
-                text = text.append(inputReader.readLine());
+                BufferedReader reader = new BufferedReader(inputReader);
+                String line = reader.readLine();
+                text.append(line);
+                while ((line = reader.readLine()) != null)
+                {
+                    text.append("\n").append(line);
+                }
+                reader.close();
             }
             catch (IOException err)
             {

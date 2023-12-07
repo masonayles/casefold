@@ -44,10 +44,10 @@ usage: CaseFold.class
 spanish-usage: CaseFold.class
 		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" -Duser.language=es -Duser.region=MX CaseFold "-h"
 
-demo: CaseFold.class
+demo2: CaseFold.class
 		cat test.txt | java -cp $(ClassPath) CaseFold "-u"
 
-demo2: CaseFold.class
+demo3: CaseFold.class
 		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-u"
 
 run-tests: CaseFold.class CaseFoldTest.class
