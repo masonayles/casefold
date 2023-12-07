@@ -27,28 +27,28 @@ run: CaseFold.class
 		java -cp ".$(SEP)commons-cli-1.6.0.jar" CaseFold
 
 run-example: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
 
 run-example2: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-l" "test.txt"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-l" "test.txt"
 
 run-example3: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-s" "test.txt"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-s" "test.txt"
 
 run-example4: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-t" "test.txt"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-t" "test.txt"
 
 usage: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-h"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-h"
 
 spanish-usage: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" -Duser.language=es -Duser.region=MX CaseFold "-h"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" -Duser.language=es -Duser.region=MX CaseFold "-h"
 
 demo: CaseFold.class
-		cat test.txt | java -cp $(CLASSPATH) CaseFold "-u"
+		cat test.txt | java -cp $(ClassPath) CaseFold "-u"
 
 demo2: CaseFold.class
-		java -cp ".$(SEP)lib:commons-cli-1.6.0.jar" CaseFold "-u"
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-u"
 
 run-tests: CaseFold.class CaseFoldTest.class
 		java -cp $(ClassPath) $(JavaFlags) org.junit.runner.JUnitCore CaseFoldTest
