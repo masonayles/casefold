@@ -53,6 +53,7 @@ casefold [option]
 * 0 - Success
 * 1 - Option Error
 * 2 - Parse Error
+  * Invalid options
 * 3 - IO Error
   * Error reading file
 * 4 - File Not Found Error
