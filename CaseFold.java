@@ -148,14 +148,23 @@ public class CaseFold
             // get file name
             try
             {
-                BufferedReader reader = new BufferedReader(inputReader);
-                String line = reader.readLine();
-                text.append(line);
-                while ((line = reader.readLine()) != null)
+                if (System.in.available() != 0)
                 {
-                    text.append("\n").append(line);
+                    BufferedReader reader = new BufferedReader(inputReader);
+                    String line = reader.readLine();
+                    text.append(line);
+                    while ((line = reader.readLine()) != null)
+                    {
+                        text.append("\n").append(line);
+                    }
+                    reader.close();
                 }
-                reader.close();
+                else
+                {
+                    // no file
+                    System.err.println(error4);
+                    System.exit(4);
+                }
             }
             catch (IOException err)
             {
@@ -167,6 +176,12 @@ public class CaseFold
 
         // Perform the selected case conversion
         StringBuilder convertedString = new StringBuilder();
+
+        // check for empty file
+        if (text.toString().equals("null"))
+        {
+            System.exit(0);
+        }
 
         switch (option)
         {
