@@ -159,7 +159,8 @@ public class CaseFoldTest
     public void test_upper_output()
     {
         exit.expectSystemExitWithStatus(0);
-        exit.checkAssertionAfterwards(new Assertion() {
+        exit.checkAssertionAfterwards(new Assertion()
+        {
             @Override
             public void checkAssertion()
             {
