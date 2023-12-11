@@ -26,28 +26,28 @@ compile-tests: CaseFoldTest.class
 run: CaseFold.class
 		java -cp ".$(SEP)commons-cli-1.6.0.jar" CaseFold
 
-run-example: CaseFold.class
-		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
-
-run-example2: CaseFold.class
-		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-l" "test.txt"
-
-run-example3: CaseFold.class
-		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-s" "test.txt"
-
-run-example4: CaseFold.class
-		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-t" "test.txt"
-
-usage: CaseFold.class
+demo: CaseFold.class
 		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-h"
 
-spanish-usage: CaseFold.class
+demo2: CaseFold.class
 		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" -Duser.language=es -Duser.region=MX CaseFold "-h"
 
-demo2: CaseFold.class
+demo3: CaseFold.class
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-u" "test.txt"
+
+demo4: CaseFold.class
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-l" "test.txt"
+
+demo5: CaseFold.class
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-s" "test.txt"
+
+demo6: CaseFold.class
+		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-t" "test.txt"
+
+demo7: CaseFold.class
 		cat test.txt | java -cp $(ClassPath) CaseFold "-u"
 
-demo3: CaseFold.class
+demo8: CaseFold.class
 		java -cp ".$(SEP)lib/commons-cli-1.6.0.jar" CaseFold "-u"
 
 run-tests: CaseFold.class CaseFoldTest.class
